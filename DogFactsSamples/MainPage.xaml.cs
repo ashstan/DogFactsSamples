@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DogFactsSamples.Data;
+using DogFactsSamples.Models;
 using Xamarin.Forms;
 
 namespace DogFactsSamples
@@ -17,6 +19,12 @@ namespace DogFactsSamples
         {
             InitializeComponent();
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            listView.ItemsSource = await App.Database.GetItemsAsync();
+        }
 
         void OnSelection(object sender, SelectedItemChangedEventArgs e)
         {
@@ -24,7 +32,7 @@ namespace DogFactsSamples
             {
                 return;
             }
-            MeFactData fact = (MeFactData)e.SelectedItem;
+            Fact fact = (Fact)e.SelectedItem;
             DisplayAlert("The Fact", fact.TheFact, "Ok");
         }
     }

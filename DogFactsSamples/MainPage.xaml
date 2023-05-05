@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:DogFactsSamples"
              mc:Ignorable="d" x:Class="DogFactsSamples.MainPage">
     <StackLayout>
-        <ListView ItemsSource="{x:Static local:MeFactData.All}"
-              RowHeight="70" ItemSelected="OnSelection" >
+        <!--<ListView ItemsSource="{x:Static local:MeFactData.All}"
+              RowHeight="70" ItemSelected="OnSelection" >-->
+        <ListView x:Name="listView" Margin="20" ItemSelected="OnSelection">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
